@@ -56,14 +56,27 @@ class _MyHomePageState extends State<MyHomePage> {
   FToast ftoast;
 
   showToast(){
-    Fluttertoast.showToast(
-        msg: 'Datei erstellt',
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: Colors.green,
-        textColor: Color(0xf3f7fbff),
-        fontSize: 16,
-    );
+   Widget toast = Container(
+     padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+     decoration: BoxDecoration(
+       borderRadius: BorderRadius.circular(25),
+       color: Colors.greenAccent,
+     ),
+     child: Row(
+       children: [
+         Icon(Icons.check),
+         SizedBox(width: 12),
+         Text('Datei gespeichert'),
+       ],
+     ),
+   );
+
+   ftoast.showToast(
+       child: toast,
+       gravity: ToastGravity.BOTTOM,
+       toastDuration: Duration(seconds: 2),
+   );
+
   }
 
 
@@ -95,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: pw.Center(
                       child: pw.Text('PDF - Datei',
                         style: pw.TextStyle(
-                          fontSize: 20,
+                          fontSize: 15,
                         )
                       )
                     ),
